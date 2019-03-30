@@ -20,6 +20,8 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
+    // const profile = this.props.profile.profile;
+    // const loading = this.props.profile.loading;
 
     let dashboardContent;
 
@@ -66,6 +68,7 @@ class Dashboard extends Component {
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
               {dashboardContent}
+              {/* jsx must inside a {} */}
             </div>
           </div>
         </div>

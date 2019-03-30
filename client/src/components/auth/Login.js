@@ -48,7 +48,8 @@ class Login extends Component {
   }
 
   render() {
-    const errors = this.props.errors;
+    // const errors = this.props.errors;
+    const { errors } = this.state;
 
     return (
       <div className="login">
@@ -66,7 +67,7 @@ class Login extends Component {
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.email
                     })}
-                    // only add 'is-invalid' if errors.name exist
+                    // only add 'is-invalid' if errors.email exist
 
                     placeholder="Email Address"
                     name="email"

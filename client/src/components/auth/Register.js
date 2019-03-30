@@ -50,6 +50,7 @@ class Register extends Component {
 
     const { user } = this.props.auth;
     //same with: const user = this.props.auth.user
+    // console.log(user); empty obj
 
     return (
       <div className="register">

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-
+import { Link } from "react-router-dom";
 import { createProfile } from "../../actions/profileActions";
 import classnames from "classnames";
 
@@ -34,6 +34,8 @@ class CreateProfile extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
+      // console.log(nextProps);
+      //nextProps include all props, even createProfile()
     }
   }
 
@@ -59,21 +61,22 @@ class CreateProfile extends Component {
     this.props.createProfile(profileData, this.props.history);
   }
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
-    const errors = this.props.errors;
+    const { errors } = this.state;
+    // const errors = this.props.errors;
     //const { errors, displaySocialInputs } = this.state;
     return (
       <div className="create-profile">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <a href="#" className="btn btn-light">
+              <Link to="/dashboard" className="btn btn-light">
                 Go Back
-              </a>
+              </Link>
               <h1 className="display-4 text-center">Create Your Profile</h1>
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
@@ -98,7 +101,7 @@ class CreateProfile extends Component {
                   )}
                   <small className="form-text text-muted">
                     A unique handle for your profile URL. Your full name,
-                    company name, nickname, etc (This CAN'T be changed later)
+                    username, nickname, etc
                   </small>
                 </div>
 
@@ -108,7 +111,6 @@ class CreateProfile extends Component {
                       "is-invalid": errors.status
                     })}
                     name="status"
-                    placeholder="Status"
                     value={this.state.status}
                     onChange={this.onChange}
                   >
@@ -124,9 +126,9 @@ class CreateProfile extends Component {
                     <option value="Intern">Intern</option>
                     <option value="Other">Other</option>
                   </select>
-                  <small className="form-text text-muted">
+                  {/* <small className="form-text text-muted">
                     Give us an idea of where you are at in your career
-                  </small>
+                  </small> */}
                 </div>
 
                 <div className="form-group">
@@ -145,7 +147,7 @@ class CreateProfile extends Component {
                     <div className="invalid-feedback">{errors.company}</div>
                   )}
                   <small className="form-text text-muted">
-                    Could be your own company or one you work for
+                    Where you are working for
                   </small>
                 </div>
 
@@ -165,7 +167,7 @@ class CreateProfile extends Component {
                     <div className="invalid-feedback">{errors.website}</div>
                   )}
                   <small className="form-text text-muted">
-                    Could be your own or a company website
+                    Could be your portfolio website
                   </small>
                 </div>
 
@@ -184,9 +186,6 @@ class CreateProfile extends Component {
                   {errors.location && (
                     <div className="invalid-feedback">{errors.location}</div>
                   )}
-                  <small className="form-text text-muted">
-                    City & state suggested (eg. Boston, MA)
-                  </small>
                 </div>
 
                 <div className="form-group">
@@ -195,7 +194,7 @@ class CreateProfile extends Component {
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.skills
                     })}
-                    placeholder="Skills"
+                    placeholder="* Skills"
                     name="skills"
                     value={this.state.skills}
                     onChange={this.onChange}
@@ -206,7 +205,7 @@ class CreateProfile extends Component {
                   )}
                   <small className="form-text text-muted">
                     Please use comma separated values (eg.
-                    HTML,CSS,JavaScript,PHP)
+                    HTML,CSS,JavaScript,React)
                   </small>
                 </div>
 
@@ -228,8 +227,7 @@ class CreateProfile extends Component {
                     </div>
                   )}
                   <small className="form-text text-muted">
-                    If you want your latest repos and a Github link, include
-                    your username
+                    Include your Github username
                   </small>
                 </div>
 
@@ -265,7 +263,6 @@ class CreateProfile extends Component {
                   >
                     Add Social Network Links
                   </button>
-                  <span className="text-muted">Optional</span>
                 </div>
 
                 <div className="input-group mb-3">
