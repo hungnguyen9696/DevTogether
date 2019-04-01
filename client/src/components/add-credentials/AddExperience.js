@@ -60,7 +60,8 @@ class AddExperience extends Component {
   }
 
   render() {
-    const errors = this.props.errors;
+    // const errors = this.props.errors;
+    const errors = this.state.errors;
 
     return (
       <div className="section add-experience">
@@ -124,6 +125,7 @@ class AddExperience extends Component {
                 <h6>From Date</h6>
                 <div className="form-group">
                   <input
+                    // type=date
                     type="date"
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.from
@@ -187,12 +189,12 @@ class AddExperience extends Component {
 
 AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
+  // profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
+  // profile: state.profile,
   errors: state.errors
 });
 

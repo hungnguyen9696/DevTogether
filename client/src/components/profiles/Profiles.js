@@ -12,6 +12,10 @@ class Profiles extends Component {
 
   render() {
     const { profiles, loading } = this.props.profile;
+    // profile state has 3 obj, see profileReducer
+    // const profiles = this.props.profile.profiles;
+    // const loading = this.props.profile.loading;
+
     let profileItems;
 
     if (profiles === null || loading) {
@@ -19,6 +23,7 @@ class Profiles extends Component {
     } else {
       if (profiles.length > 0) {
         profileItems = profiles.map(profile => (
+          // Warning: Each child in an array or iterator should have a unique "key" prop
           <ProfileItem key={profile._id} profile={profile} />
         ));
       } else {
