@@ -11,7 +11,8 @@ const posts = require("./routes/api/posts");
 const app = express();
 
 //body parser middleware
-//allow to access req.body
+//allow to access req.body and convert the user’s input into the JSON format
+// Mongoose provides a save function that will take a JSON object and store it in the database
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -20,10 +21,7 @@ const db = require("./config/keys").mongoURI;
 
 //connect to MongoDB
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
