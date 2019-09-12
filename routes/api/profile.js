@@ -27,6 +27,7 @@ router.get(
   (req, res) => {
     const errors = {};
     //console.log(req.user._id);
+    //req.user.id come in token
     Profile.findOne({ user: req.user.id })
       .populate("user", ["name", "avatar"])
       .then(profile => {

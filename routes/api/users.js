@@ -62,6 +62,17 @@ router.post("/register", (req, res) => {
   });
 });
 
+// using async await
+// async (req, res) => {
+
+//   try {
+//     let User = await User.findOne({email: req.body.email});
+//   }
+//   catch {
+
+//   }
+// }
+
 // @route   POST api/users/login
 // @desc    Login User / Returning JWT Token
 // @access  Public
