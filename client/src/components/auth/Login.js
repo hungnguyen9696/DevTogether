@@ -68,6 +68,7 @@ class Login extends Component {
                       "is-invalid": errors.email
                     })}
                     // only add 'is-invalid' if errors.email exist
+                    // classnames: conditionally joining classNames together
 
                     placeholder="Email Address"
                     name="email"
